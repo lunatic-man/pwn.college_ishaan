@@ -22,7 +22,7 @@ In this challenge of Linux Luminarium Dojo, Hello Hackers Module, we need to run
 Again a pretty straight forward command with an argument, I simply ran the '''hello hackers''' command to get the flag. This flag I copied and pasted into the Flag field in the bar below workspace area and got the challenge completion alert. 
 
 # What I learned: 
-This challenge taught me about the arguments that can be given along with a command to customize a command to suit out needs. The method usually follows the syntax of '''<command> <argument1> .....'''. 
+This challenge taught me about the arguments that can be given along with a command to customize a command to suit out needs. The method usually follows the syntax of '''command argument1 argument2 .....'''. 
 
 # References: N/A 
 -----------------------------------------------------------------------------------------------------------------------------------
