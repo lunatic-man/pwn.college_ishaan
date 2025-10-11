@@ -2553,4 +2553,117 @@ From this challenge, I learned that something known as tags exist for a reposito
 - https://gemini.google.com/app/f8225c2d10f8c9b9
 ---------------------------------------------------------------------------------------------------------------------------------
 ## Level 31 -> Level 32
+To solve this challenge, we needed to `push` a file to the repo. 
+
+## My solve 
+
+**Flag:** `3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K`
+
+To solve this challenge, I followed the steps as listed below: 
+- I had no clue about this challenge, apart from cloning the repo, so I asked AI to help me solve this. 
+- Using the hints AI gave me, I used `git add`, `git commit` and finally `git push` after creating the file as needed. The hint for file creation was give in `README.md` 
+```bash 
+22:36:20 ishaan-mishra@ishaan-mishra-Lenovo-G505s ~/repo (master) → cat README.md
+This time your task is to push a file to the remote repository.
+
+Details:
+    File name: key.txt
+    Content: 'May I come in?'
+    Branch: master
+
+22:40:49 ishaan-mishra@ishaan-mishra-Lenovo-G505s ~/repo (master) → echo 'May I come in?' > key.txt
+22:41:14 ishaan-mishra@ishaan-mishra-Lenovo-G505s ~/repo (master) → rm .gitignore
+22:35:35 ishaan-mishra@ishaan-mishra-Lenovo-G505s ~/repo (master) → git add 
+Nothing specified, nothing added.
+hint: Maybe you wanted to say 'git add .'?
+hint: Turn this message off by running
+hint: "git config advice.addEmptyPathspec false"
+22:35:42 ishaan-mishra@ishaan-mishra-Lenovo-G505s ~/repo (master) → git add key.txt 
+22:35:49 ishaan-mishra@ishaan-mishra-Lenovo-G505s ~/repo (master) → git commit -m "As per ques"
+[master 201e758] As per ques
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ delete mode 100644 .gitignore
+ create mode 100644 key.txt
+22:36:01 ishaan-mishra@ishaan-mishra-Lenovo-G505s ~/repo (master) → git push 
+                         _                     _ _ _   
+                        | |__   __ _ _ __   __| (_) |_ 
+                        | '_ \ / _` | '_ \ / _` | | __|
+                        | |_) | (_| | | | | (_| | | |_ 
+                        |_.__/ \__,_|_| |_|\__,_|_|\__|
+                                                       
+
+                      This is an OverTheWire game server. 
+            More information on http://www.overthewire.org/wargames
+
+backend: gibson-1
+bandit31-git@bandit.labs.overthewire.org's password: 
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 295 bytes | 295.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: ### Attempting to validate files... ####
+remote: 
+remote: .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.
+remote: 
+remote: Well done! Here is the password for the next level:
+remote: 3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K 
+remote: 
+remote: .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.
+remote: 
+To ssh://bandit.labs.overthewire.org:2220/home/bandit31-git/repo
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'ssh://bandit.labs.overthewire.org:2220/home/bandit31-git/repo'
+22:36:20 ishaan-mishra@ishaan-mishra-Lenovo-G505s ~/repo (master) → 
+
+```
+
+## What I learned 
+From this challenge, I learned how we can add and remove file from a repository and the order of the commands to be followed while doing so. 
+
+## References
+- https://overthewire.org/wargames/bandit/bandit32.html
+- https://gemini.google.com/app/336bb34db2ab0c12
+---------------------------------------------------------------------------------------------------------------------------------
+## Level 32 -> Level 33 
+To solve this challenge, we need to escape an uppercase jail. 
+
+## My solve 
+
+**Flag:** `tQdtbs5D5i2vJwkO8mEyYEyTL8izoeJ0` 
+
+To solve this challenge, I followed the steps as below: 
+- Seeing that this was another jail, and because it mentioned that it was an uppercase shell, I first typed out the `ls` command to see how it works. 
+
+```bash 
+>> ls
+sh: 1: LS: Permission denied
+>> 
+
+```
+- From the stderr output, I was able to figure out that all my commands are getting converted to uppercase before being executed. Therefore to switch to a shell, or to escape this program, I first typed out `$shell` to get it to execute the path in shell variable.
+
+```bash 
+>> $shell 
+WELCOME TO THE UPPERCASE SHELL
+>> 
+```
+
+- I got this output, but it did not seem very useful, so I typed out `$0` to revert to whatever shell is being used. This allowed me to escape the jail.
+- From that, it was a cakewalk to get the password. 
+
+```bash 
+>> $0
+$ whoami 
+bandit33
+$ cat /etc/bandit_pass/bandit33 
+tQdtbs5D5i2vJwkO8mEyYEyTL8izoeJ0
+
+```
+
+## What I learned 
+Because of `$shell` not working, I googled and tried to understand the difference between `$shell` and `$0`. I learned that `$0` is dynamic and holds the path of the current shell where as `$shell` holds the default shell. 
+---------------------------------------------------------------------------------------------------------------------------------
+
 
